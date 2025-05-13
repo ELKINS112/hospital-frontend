@@ -1,0 +1,1 @@
+export default function AccountantDashboard() { return <h2>Accountant Dashboard</h2>; }
