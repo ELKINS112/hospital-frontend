@@ -11,7 +11,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/login", { email, password });
+      const response = await axios.post("https://hospital-backend-0laa.onrender.com/login", { email, password });
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("role", response.data.role);
       if (response.data.role === "doctor") navigate("/doctor");
