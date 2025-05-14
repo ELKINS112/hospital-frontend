@@ -1,1 +1,0 @@
-export default function NurseDashboard() { return <h2>Nurse Dashboard</h2>; }
