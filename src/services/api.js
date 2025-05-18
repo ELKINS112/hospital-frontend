@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 // Use environment variable or fallback to localhost
-const API_BASE = process.env.REACT_APP_API_URL || "http://localhost:5000";
+const API_BASE = "https://hospital-backend-0laa.onrender.com"; 
+#process.env.REACT_APP_API_URL || "http://localhost:5000";
 
 const axiosInstance = axios.create({
   baseURL: API_BASE,
