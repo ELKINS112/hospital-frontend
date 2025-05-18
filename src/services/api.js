@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-const API_BASE = "https://hospital-backend-0laa.onrender.com";
+// Use environment variable or fallback to localhost
+const API_BASE = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
-// Configure Axios globally if needed
 const axiosInstance = axios.create({
   baseURL: API_BASE,
-  withCredentials: false,  // set to true if your backend uses cookies
+  withCredentials: false,
   headers: {
     'Content-Type': 'application/json'
   }
