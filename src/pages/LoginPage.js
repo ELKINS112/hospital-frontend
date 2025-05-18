@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import axios from "axios";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { loginUser } from "../services/api";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -9,24 +9,20 @@ function LoginPage() {
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post("https://hospital-backend-0laa.onrender.com/login", {
-        email,
-        password,
-      });
-      const { token, role } = res.data;
+      const { token, role } = await loginUser({ email, password });
       localStorage.setItem("token", token);
       localStorage.setItem("role", role);
       navigate(`/${role}/dashboard`);
     } catch (error) {
-      alert("Login failed: " + (error.response?.data?.message || "Try again"));
+      alert("Login failed: " + (error.response?.data?.message || error.message));
     }
   };
 
   return (
     <div>
       <h2>Login</h2>
-      <input placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
-      <input placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)} />
+      <input type="text" placeholder="Email" onChange={e => setEmail(e.target.value)} />
+      <input type="password" placeholder="Password" onChange={e => setPassword(e.target.value)} />
       <button onClick={handleLogin}>Login</button>
     </div>
   );
